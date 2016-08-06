@@ -1,0 +1,17 @@
+{
+  "name": "bookmark",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "John Kariuki"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
