@@ -1,13 +1,10 @@
-Author = require('../models/').Author;
 Book = require('../models/').Book;
 
 module.exports= {
   index(req, res) {
-    Author.findAll({
-      include: Book
-    })
-      .then(function (authors) {
-        res.status(200).json(authors);
+    Book.findAll()
+      .then(function (books) {
+        res.status(200).json(books);
       })
       .catch(function (error) {
         res.status(500).json(error);
@@ -15,11 +12,9 @@ module.exports= {
   },
 
   show(req, res) {
-    Author.findById(req.params.id, {
-      include: Book
-    })
-    .then(function (author) {
-      res.status(200).json(author);
+    Book.findById(req.params.id)
+    .then(function (book) {
+      res.status(200).json(book);
     })
     .catch(function (error){
       res.status(500).json(error);
@@ -27,9 +22,9 @@ module.exports= {
   },
 
   create(req, res) {
-    Author.create(req.body)
-      .then(function (newAuthor) {
-        res.status(200).json(newAuthor);
+    Book.create(req.body)
+      .then(function (newBook) {
+        res.status(200).json(newBook);
       })
       .catch(function (error){
         res.status(500).json(error);
@@ -37,7 +32,7 @@ module.exports= {
   },
 
   update(req, res) {
-    Author.update(req.body, {
+    Book.update(req.body, {
       where: {
         id: req.params.id
       }
@@ -51,7 +46,7 @@ module.exports= {
   },
 
   delete(req, res) {
-    Author.destroy({
+    Book.destroy({
       where: {
         id: req.params.id
       }
