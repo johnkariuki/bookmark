@@ -1,6 +1,7 @@
 Book = require('../models/').Book;
 
 module.exports= {
+  //Get a list of all books using model.findAll()
   index(req, res) {
     Book.findAll()
       .then(function (books) {
@@ -11,6 +12,7 @@ module.exports= {
       });
   },
 
+  //Get a book by it's unique ID using model.findById()
   show(req, res) {
     Book.findById(req.params.id)
     .then(function (book) {
@@ -21,6 +23,7 @@ module.exports= {
     });
   },
 
+  //Create a new book using model.create()
   create(req, res) {
     Book.create(req.body)
       .then(function (newBook) {
@@ -31,6 +34,7 @@ module.exports= {
       });
   },
 
+  //Edit an existing book using model.update()
   update(req, res) {
     Book.update(req.body, {
       where: {
@@ -45,6 +49,7 @@ module.exports= {
     });
   },
 
+  //Delete an existing book by it's unique ID using model.destroy()
   delete(req, res) {
     Book.destroy({
       where: {

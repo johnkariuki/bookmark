@@ -8,12 +8,14 @@ var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config')[env];
 var db        = {};
 
+//Create a Sequelize connection to the database using the URL in config/config.js
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
   var sequelize = new Sequelize(config.url, config);
 }
 
+//Load all the models
 fs
   .readdirSync(__dirname)
   .filter(function(file) {
@@ -30,6 +32,7 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
+//Export the db Object
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

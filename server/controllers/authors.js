@@ -2,8 +2,10 @@ Author = require('../models/').Author;
 Book = require('../models/').Book;
 
 module.exports= {
+  //Get a list of all authors using model.findAll()
   index(req, res) {
     Author.findAll({
+      //Return all books that have a matching author_id for each Author
       include: Book
     })
       .then(function (authors) {
@@ -14,8 +16,10 @@ module.exports= {
       });
   },
 
+  //Get an author by the unique ID using model.findById()
   show(req, res) {
     Author.findById(req.params.id, {
+      //Return all books that have a matching author_id for the author
       include: Book
     })
     .then(function (author) {
@@ -26,6 +30,7 @@ module.exports= {
     });
   },
 
+  //Create a new author using model.create()
   create(req, res) {
     Author.create(req.body)
       .then(function (newAuthor) {
@@ -36,6 +41,7 @@ module.exports= {
       });
   },
 
+  //Edit an existing author details using model.update()
   update(req, res) {
     Author.update(req.body, {
       where: {
@@ -50,6 +56,7 @@ module.exports= {
     });
   },
 
+  //Delete an existing author by the unique ID using model.destroy()
   delete(req, res) {
     Author.destroy({
       where: {
