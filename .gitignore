@@ -1,4 +1,8 @@
+#node modules
 node_modules
+
+#Public folder
 public
+
 npm-debug.log
 test.js
