@@ -15,12 +15,13 @@ var gulp = require('gulp'),
 var paths = {
   jade: 'app/**/*.jade',
   index: 'public/index.html',
+  images: ['app/images/**/*'],
   scripts: {
     js: './public/js/index.js',
     css: './public/css/*.css'
   },
   compileScripts: {
-    js: ['app/js/*.js', 'app/**/*.js'],
+    js: ['app/app.js', 'app/js/**/*.js'],
     css: 'app/styles/*.+(less|css)'
   }
 };
@@ -54,6 +55,12 @@ gulp.task('css:minify', function () {
     .pipe(gulp.dest('./public/css'));
 });
 
+//Copy the images folder from app to public recursively
+gulp.task('copy:images', function () {
+  gulp.src(paths.images)
+    .pipe(gulp.dest('./public/images'));
+});
+
 //Run bower install.
 gulp.task('bower:run', function () {
   bower();
@@ -83,7 +90,8 @@ gulp.task('watch', function () {
   gulp.watch(paths.compileScripts.js, ['js:minify']);
   gulp.watch(paths.compileScripts.css, ['css:minify']);
   gulp.watch(paths.index, ['scripts:inject']);
+  gulp.watch(paths.images, ['copy:images'])
 });
 
 //Default task.
-gulp.task('default', ['nodemon:run', 'bower:run', 'jade:compile', 'js:minify', 'css:minify', 'scripts:inject', 'watch']);
+gulp.task('default', ['nodemon:run', 'bower:run', 'jade:compile', 'js:minify', 'css:minify', 'scripts:inject', 'watch', 'copy:images']);

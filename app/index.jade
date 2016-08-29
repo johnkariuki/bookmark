@@ -1,9 +1,60 @@
 doctype html
 html(lang="en")
   head
-    title bookmark app
-    
+    title bookmark App
     include views/layouts/head
-  body(layout="row" ng-app="Bookmark")
+  body(layout="row" ng-app="Bookmark" ng-controller="MainCtrl")
     
+    //Sidenav
+    md-sidenav.md-whiteframe-z2(md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')")
+      md-toolbar
+        h1 Authors
+      md-content
+        md-list
+          md-list-item(ng-repeat="author in authors")
+            md-button(ng-click="selectAuthor(author)")
+              md-icon.author_avatar(md-svg-icon="author")
+              span(ng-class="{selected: author === selectedAuthor}") {{author.name}}
+      div.new_author
+        md-button(aria-label="new_book" class="md-fab md-raised md-primary md-mini")
+          ng-md-icon(icon="add")
+            md-tooltip(direction="top") Add new author
+            
+    //Main toolbar
+    div(layout="column" flex)
+      md-toolbar(layout="row")
+        div.md-toolbar-tools
+          md-button.md-button-icon(hide-gt-sm aria-label="Menu" ng-click="toggleSidenav()")
+            ng-md-icon.authors(icon="view_module")
+          h1 Bookmark
+          
+      //Main content
+      md-content.md-default-theme
+        div.md-padding
+          h2(ng-show="selectedAuthor.Books.length") Books by {{selectedAuthor.name}}
+          div.author_actions
+            md-button.author_profile(aria-label="view_profile" class="md-fab md-raised md-primary md-mini")
+              ng-md-icon(icon="person")
+                md-tooltip(direction="bottom") View {{selectedAuthor.name}}'s profile
+            md-button.new_book(aria-label="new_book" class="md-fab md-raised md-primary md-mini")
+              ng-md-icon(icon="my_library_add")
+                md-tooltip(direction="bottom") Add new book by {{selectedAuthor.name}}
+        md-content.md-padding(layout="column")
+          md-card(ng-repeat="book in selectedAuthor.Books")
+            div(layout="row" layout-align="end")
+              div.books_menu
+                  md-button(aria-label="edit" class="md-fab md-raised md-mini")
+                    ng-md-icon(icon="edit")
+                    md-tooltip(direction="bottom") edit book details
+                  md-button(aria-label="delete" class="md-fab md-raised md-mini")
+                    ng-md-icon(icon="delete")
+                    md-tooltip(direction="bottom") delete book details
+            md-card-title
+              md-card-title-text
+                span.md-headline {{book.name}}
+                span.md-subhead Publication date: {{ book.publication_date | date: mediumDate}}
+            md-card-content
+              div.md-subhead {{book.description}}
+              md-chips
+                md-chip ISBN Number: {{ book.isbn}}
     include views/layouts/footer
