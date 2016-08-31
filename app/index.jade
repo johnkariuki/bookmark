@@ -16,7 +16,7 @@ html(lang="en")
               md-icon.author_avatar(md-svg-icon="author")
               span(ng-class="{selected: author === selectedAuthor}") {{author.name}}
       div.new_author
-        md-button(aria-label="new_book" class="md-fab md-raised md-primary md-mini")
+        md-button(aria-label="new_author" class="md-fab md-raised md-primary md-mini" ng-click="newAuthorDialog($event)")
           ng-md-icon(icon="add")
             md-tooltip(direction="top") Add new author
             
@@ -36,7 +36,7 @@ html(lang="en")
             md-button.author_profile(aria-label="view_profile" class="md-fab md-raised md-primary md-mini")
               ng-md-icon(icon="person")
                 md-tooltip(direction="bottom") View {{selectedAuthor.name}}'s profile
-            md-button.new_book(aria-label="new_book" class="md-fab md-raised md-primary md-mini")
+            md-button.new_book(aria-label="new_book" class="md-fab md-raised md-primary md-mini" ng-click="newBookDialog($event)")
               ng-md-icon(icon="my_library_add")
                 md-tooltip(direction="bottom") Add new book by {{selectedAuthor.name}}
         md-content.md-padding(layout="column")

@@ -9,6 +9,7 @@ var Bookmark = angular.module('Bookmark', [
 
 Bookmark
   .config(['$mdThemingProvider', function ($mdThemingProvider) {
+    //Set default theme
     $mdThemingProvider.theme('default')
       .primaryPalette('blue')
       .accentPalette('red');

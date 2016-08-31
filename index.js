@@ -1,10 +1,12 @@
 var express = require('express'),
   authors = require('./server/controllers/authors'),
-  books = require('./server/controllers/books');
+  books = require('./server/controllers/books'),
+  bodyParser = require('body-parser');;
 
 var app = express();
 
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(process.cwd() + '/public'));
 
 app.get('/authors', authors.index);
