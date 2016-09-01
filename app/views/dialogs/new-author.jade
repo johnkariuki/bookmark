@@ -1,0 +1,14 @@
+md-dialog(aria-label="New Author" flex="50")
+  md-toolbar
+    .md-toolbar-tools
+      h2 Create New Author
+  form(name="authorForm" ng-submit="saveAuthor(author)" novalidate)
+    md-dialog-content.md-padding
+      md-input-container.md-block
+        label Name
+        input(ng-model="author.name" type="text" name="author.name" required)
+      md-input-container.md-block
+        label Biography
+        textarea(ng-model="author.bio" rows="5" name="author.bio" required)
+    md-dialog-actions
+      md-button(aria-label="Save Author" type="submit" ng-disabled="authorForm.$invalid") Save

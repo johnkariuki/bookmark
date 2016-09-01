@@ -1,0 +1,21 @@
+md-dialog(aria-label="New Book" flex="50")
+  md-toolbar
+    .md-toolbar-tools
+      h2 Add New Book
+  form(name="bookForm" ng-submit="saveBook(book)" novalidate)
+    md-dialog-content.md-padding
+      div(layout="row")
+        md-input-container(flex)
+          label Name
+          input(ng-model="book.name" type="text" name="book.name" required)
+        md-input-container(flex)
+          label Publication Date
+          md-datepicker(ng-model="book.publication_date" type="text" name="book.publication_date" required)
+      md-input-container.md-block
+        label ISBN number
+        input(ng-model="book.isbn" type="text" name="book.isbn" required)
+      md-input-container.md-block
+        label Description
+        textarea(ng-model="book.description" rows="5" name="book.description" required)
+    md-dialog-actions
+      md-button(aria-label="Save Book" type="submit" ng-disabled="bookForm.$invalid") Add Book
