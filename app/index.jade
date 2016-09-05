@@ -33,9 +33,10 @@ html(lang="en")
         div.md-padding
           h2(ng-show="selectedAuthor.Books.length") Books by {{selectedAuthor.name}}
           div.author_actions
-            md-button.author_profile(aria-label="view_profile" class="md-fab md-raised md-primary md-mini")
+            md-button.author_profile(aria-label="view_profile" class="md-fab md-raised md-primary md-mini" ng-click="showAuthorProfile($event)")
               ng-md-icon(icon="person")
                 md-tooltip(direction="bottom") View {{selectedAuthor.name}}'s profile
+                
             md-button.new_book(aria-label="new_book" class="md-fab md-raised md-primary md-mini" ng-click="newBookDialog($event)")
               ng-md-icon(icon="my_library_add")
                 md-tooltip(direction="bottom") Add new book by {{selectedAuthor.name}}

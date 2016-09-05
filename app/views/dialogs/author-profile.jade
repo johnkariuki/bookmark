@@ -1,0 +1,16 @@
+md-dialog(aria-label="Author Profile" flex="50")
+  md-toolbar
+    .md-toolbar-tools
+      h2 {{$root.selectedAuthor.name}}'s profile
+  md-dialog-content.md-padding
+    md-list
+      md-list-item
+        div.md-list-item-text
+          h3 Biography
+          p {{$root.selectedAuthor.bio}}
+      md-divider
+      md-list-item
+        div.md-list-item-text
+          h3 Books on Bookmark
+          p {{$root.selectedAuthor.Books.length}}
+    
