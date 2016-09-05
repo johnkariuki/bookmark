@@ -7,8 +7,8 @@ An AngularJS Application With Sequelize, The Node.js and IO.js ORM
 
 ```
 npm install -g sequelize-cli pg
-npm i && bower i
-sequelize db:migrate 
+npm install && bower install
+sequelize db:migrate
 gulp
 ```
 

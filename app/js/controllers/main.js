@@ -41,4 +41,15 @@ function ($rootScope, $scope, $mdSidenav, $mdDialog, Authors) {
       fullscreen: true
     });
   };
+
+  $scope.showAuthorProfile = function (ev) {
+    $mdDialog.show({
+      templateUrl: 'views/dialogs/author-profile.html',
+      controller: 'AuthorDialogCtrl',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: true
+    });
+  };
 }]);
