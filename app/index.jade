@@ -44,12 +44,12 @@ html(lang="en")
           md-card(ng-repeat="book in selectedAuthor.Books")
             div(layout="row" layout-align="end")
               div.books_menu
-                  md-button(aria-label="edit" class="md-fab md-raised md-mini")
+                  md-button(aria-label="edit" class="md-fab md-raised md-mini" ng-click="editBook($event)")
                     ng-md-icon(icon="edit")
                     md-tooltip(direction="bottom") edit book details
-                  md-button(aria-label="delete" class="md-fab md-raised md-mini")
+                  md-button(aria-label="delete" class="md-fab md-raised md-mini" ng-click="deleteBook($event, book)")
                     ng-md-icon(icon="delete")
-                    md-tooltip(direction="bottom") delete book details
+                    md-tooltip(direction="bottom") delete book
             md-card-title
               md-card-title-text
                 span.md-headline {{book.name}}

@@ -14,6 +14,18 @@ angular.module('Bookmark.services')
             deferred.reject(error);
           });
         return deferred.promise;
+      },
+      delete: function(bookId) {
+        var deffered = $q.defer();
+        $http
+          .delete(url + '/books/' + bookId)
+          .then(function (response) {
+            deffered.resolve(response.data);
+          })
+          .catch(function (error) {
+            deffered.reject(error);
+          });
+        return deffered.promise;
       }
     };
   }]);

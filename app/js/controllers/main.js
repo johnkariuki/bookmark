@@ -1,6 +1,6 @@
 angular.module('Bookmark.controllers')
-.controller('MainCtrl', ['$rootScope', '$scope', '$mdSidenav', '$mdDialog', 'Authors',
-function ($rootScope, $scope, $mdSidenav, $mdDialog, Authors) {
+.controller('MainCtrl', ['$rootScope', '$scope', '$mdSidenav', '$mdDialog', 'Authors', 'Books', 'Toast',
+function ($rootScope, $scope, $mdSidenav, $mdDialog, Authors, Books, Toast) {
   //Fetch all authors
   Authors.all()
     .then(function (authors) {
@@ -42,6 +42,7 @@ function ($rootScope, $scope, $mdSidenav, $mdDialog, Authors) {
     });
   };
 
+  //Show An author's profile
   $scope.showAuthorProfile = function (ev) {
     $mdDialog.show({
       templateUrl: 'views/dialogs/author-profile.html',
@@ -51,5 +52,30 @@ function ($rootScope, $scope, $mdSidenav, $mdDialog, Authors) {
       clickOutsideToClose:true,
       fullscreen: true
     });
+  };
+
+  //Delete a book
+  $scope.deleteBook = function (ev, book) {
+    var deleteBook = $mdDialog.confirm()
+      .title('Delete ' + book.name + '?')
+      .textContent(book.name + ' will be wiped off the face of the earth.')
+      .ariaLabel('Delete book')
+      .ok('Yes! do it!')
+      .cancel('No');
+
+    $mdDialog.show(deleteBook)
+      .then(function () {
+        Books.delete(book.id)
+          .then(function () {
+            $scope.selectedAuthor.Books = $scope.selectedAuthor.Books.filter(function (i) {
+              return i.id !== book.id;
+            });
+            Toast.show(book.name + ' has been deleted.', 'top right', 3000);
+          })
+          .catch(function (error) {
+            Toast.show('Error deleting ' + book.name + '. Please try again.', 'top right', 3000);
+          });
+
+      });
   };
 }]);
