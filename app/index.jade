@@ -43,13 +43,14 @@ html(lang="en")
         md-content.md-padding(layout="column")
           md-card(ng-repeat="book in selectedAuthor.Books")
             div(layout="row" layout-align="end")
+              //Edit and Delete Books
               div.books_menu
-                  md-button(aria-label="edit" class="md-fab md-raised md-mini")
-                    ng-md-icon(icon="edit")
-                    md-tooltip(direction="bottom") edit book details
-                  md-button(aria-label="delete" class="md-fab md-raised md-mini")
-                    ng-md-icon(icon="delete")
-                    md-tooltip(direction="bottom") delete book details
+                md-button(aria-label="edit" class="md-fab md-raised md-mini" ng-click="editBook($event, book)")
+                  ng-md-icon(icon="edit")
+                  md-tooltip(direction="bottom") edit book details
+                md-button(aria-label="delete" class="md-fab md-raised md-mini" ng-click="deleteBook($event, book)")
+                  ng-md-icon(icon="delete")
+                  md-tooltip(direction="bottom") delete book
             md-card-title
               md-card-title-text
                 span.md-headline {{book.name}}

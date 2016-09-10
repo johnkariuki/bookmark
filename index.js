@@ -13,12 +13,13 @@ app.get('/authors', authors.index);
 app.get('/authors/:id', authors.show);
 app.post('/authors', authors.create);
 app.put('/authors', authors.update);
-app.delete('/authors', authors.delete);
+app.delete('/authors/:id', authors.delete);
 
 app.get('/books', books.index);
 app.get('/books/:id', books.show);
 app.post('/books', books.create);
-app.delete('/books', books.delete);
+app.put('/books/:id', books.update);
+app.delete('/books/:id', books.delete);
 
 app.get('/*', function (req, res) {
   res.sendFile('index.html', {
