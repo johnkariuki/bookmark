@@ -18,6 +18,7 @@ app.delete('/authors/:id', authors.delete);
 app.get('/books', books.index);
 app.get('/books/:id', books.show);
 app.post('/books', books.create);
+app.put('/books/:id', books.update);
 app.delete('/books/:id', books.delete);
 
 app.get('/*', function (req, res) {

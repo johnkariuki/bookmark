@@ -30,18 +30,6 @@ function ($rootScope, $scope, $mdSidenav, $mdDialog, Authors, Books, Toast) {
     });
   };
 
-  //Dialog to create new book
-  $scope.newBookDialog = function (ev) {
-    $mdDialog.show({
-      templateUrl: 'views/dialogs/new-book.html',
-      controller: 'AuthorDialogCtrl',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose:true,
-      fullscreen: true
-    });
-  };
-
   //Show An author's profile
   $scope.showAuthorProfile = function (ev) {
     $mdDialog.show({
@@ -54,7 +42,22 @@ function ($rootScope, $scope, $mdSidenav, $mdDialog, Authors, Books, Toast) {
     });
   };
 
-  //Delete a book
+  //Dialog to create new book
+  $scope.newBookDialog = function (ev) {
+    $mdDialog.show({
+      templateUrl: 'views/dialogs/new-book.html',
+      controller: 'BookDialogCtrl',
+      locals: {
+        bookDetails: null
+      },
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: true
+    });
+  };
+
+  //Delete an existing book
   $scope.deleteBook = function (ev, book) {
     var deleteBook = $mdDialog.confirm()
       .title('Delete ' + book.name + '?')
@@ -77,5 +80,20 @@ function ($rootScope, $scope, $mdSidenav, $mdDialog, Authors, Books, Toast) {
           });
 
       });
+  };
+
+  //Show modal to edit an existing book's details
+  $scope.editBook = function (ev, book) {
+    $mdDialog.show({
+      templateUrl: 'views/dialogs/edit-book.html',
+      controller: 'BookDialogCtrl',
+      locals: {
+        bookDetails: book
+      },
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: true
+    });
   };
 }]);
