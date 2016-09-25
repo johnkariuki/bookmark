@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "node_modules/.bin/sequelize db:migrate",
     "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:johnkariuki/bookmark.git"
   },
   "author": "John Kariuki",
   "license": "ISC",
@@ -19,6 +23,7 @@
     "pg-hstore": "^2.3.2",
     "save": "^2.3.0",
     "sequelize": "^3.23.6",
+    "sequelize-cli": "^2.4.0",
     "winston": "^2.2.0"
   },
   "devDependencies": {

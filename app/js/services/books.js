@@ -1,12 +1,11 @@
 angular.module('Bookmark.services')
   .factory('Books', ['$http', '$q', function ($http, $q) {
-    var url = 'http://localhost:8000';
 
     return {
       new: function (book) {
         var deferred = $q.defer();
         $http
-          .post(url + '/books', book)
+          .post('/books', book)
           .then(function (response) {
             deferred.resolve(response.data);
           })
@@ -18,7 +17,7 @@ angular.module('Bookmark.services')
       delete: function(bookId) {
         var deffered = $q.defer();
         $http
-          .delete(url + '/books/' + bookId)
+          .delete('/books/' + bookId)
           .then(function (response) {
             deffered.resolve(response.data);
           })
@@ -30,7 +29,7 @@ angular.module('Bookmark.services')
       update: function (book) {
         var deferred = $q.defer();
         $http
-          .put(url + '/books/' + book.id, book)
+          .put('/books/' + book.id, book)
           .then(function (response) {
             deferred.resolve(response.data);
           })

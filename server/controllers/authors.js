@@ -25,7 +25,7 @@ module.exports= {
     .then(function (author) {
       res.status(200).json(author);
     })
-    .catch(function (error){
+    .catch(function (error) {
       res.status(500).json(error);
     });
   },
@@ -36,7 +36,7 @@ module.exports= {
       .then(function (newAuthor) {
         res.status(200).json(newAuthor);
       })
-      .catch(function (error){
+      .catch(function (error) {
         res.status(500).json(error);
       });
   },
@@ -51,7 +51,7 @@ module.exports= {
     .then(function (updatedRecords) {
       res.status(200).json(updatedRecords);
     })
-    .catch(function (error){
+    .catch(function (error) {
       res.status(500).json(error);
     });
   },
@@ -66,7 +66,7 @@ module.exports= {
     .then(function (deletedRecords) {
       res.status(200).json(deletedRecords);
     })
-    .catch(function (error){
+    .catch(function (error) {
       res.status(500).json(error);
     });
   }
