@@ -9,6 +9,7 @@ var gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
   plumber = require('gulp-plumber'),
   cssmin = require('gulp-cssmin'),
+  karma = require('karma').Server,
   path = require('path');
 
 //Paths to watch for changes using the watch task.
@@ -82,6 +83,12 @@ gulp.task('nodemon:run', function () {
     ext: 'js html',
     ignore: ['public/**', 'app/**', 'node_modules/**']
   });
+});
+
+gulp.task('test:client', function (done) {
+  new karma({
+    configFile: __dirname + '/karma.conf.js'
+  }, done).start();
 });
 
 //Watch for changes in files.
