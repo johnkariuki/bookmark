@@ -1,4 +1,4 @@
-describe('Authors service', function () {
+describe('Service tests', function () {
   var Authors, httpBackend;
 
   //Load the mock application module.
@@ -23,7 +23,7 @@ describe('Authors service', function () {
     httpBackend.when('POST', '/authors').respond(200, {});
   });
 
-  describe('Service tests', function () {
+  describe('Authors service', function () {
     it('Should return all authors', function (done) {
       Authors.all().then(function (response) {
         expect(response).toBeDefined();

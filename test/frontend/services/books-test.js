@@ -1,4 +1,4 @@
-describe('Books service', function () {
+describe('Service tests', function () {
   var Books, httpBackend;
 
   //Load the mock application module.
@@ -18,7 +18,7 @@ describe('Books service', function () {
     httpBackend.when('DELETE', '/books/1').respond(200, {});
   });
 
-  describe('Service tests', function () {
+  describe('Books service', function () {
     it('Should create a new book', function (done) {
       Books.new().then(function (response) {
         expect(response).toBeDefined();

@@ -1,4 +1,4 @@
-describe('Toast service', function () {
+describe('Service tests', function () {
   var Toast, $mdToast;
 
   //Load the mock application module.
@@ -11,8 +11,8 @@ describe('Toast service', function () {
     spyOn($mdToast, 'show');
   }));
 
-  describe('Toast tests', function () {
-    it('show call $mdToast.show method', function () {
+  describe('Toast service', function () {
+    it('Should call $mdToast.show method', function () {
       Toast.show('message', 'top right', 1000);
       expect($mdToast.show).toHaveBeenCalled();
     });
