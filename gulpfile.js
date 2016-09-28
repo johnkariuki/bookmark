@@ -9,6 +9,8 @@ var gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
   plumber = require('gulp-plumber'),
   cssmin = require('gulp-cssmin'),
+  mocha = require('gulp-mocha'),
+  istanbul = require('gulp-istanbul'),
   karma = require('karma').Server,
   path = require('path');
 
@@ -24,7 +26,13 @@ var paths = {
   compileScripts: {
     js: ['app/app.js', 'app/js/**/*.js'],
     css: 'app/styles/*.+(less|css)'
-  }
+  },
+  serverTests: [
+    'test/server/**/*.js'
+  ],
+  serverScripts: [
+    'server/controllers/*.js'
+  ]
 };
 
 //Compile Jade files to html and save them into the public directory.
@@ -91,6 +99,22 @@ gulp.task('test:client', function (done) {
   }, done).start();
 });
 
+//Run the server tests and generate coverage reports
+gulp.task('test:server', ['test:server:coverage'], function (done) {
+  gulp.src(paths.serverTests)
+    .pipe(mocha())
+    .pipe(istanbul.writeReports({
+      dir: './coverage/server',
+      reporters: ['lcov', 'json', 'text', 'text-summary']
+    }));
+});
+
+gulp.task('test:server:coverage', function () {
+  gulp.src(paths.serverScripts)
+    .pipe(istanbul())
+    .pipe(istanbul.hookRequire());
+});
+
 //Watch for changes in files.
 gulp.task('watch', function () {
   gulp.watch(paths.jade, ['jade:compile']);
@@ -101,4 +125,5 @@ gulp.task('watch', function () {
 });
 
 //Default task.
-gulp.task('default', ['nodemon:run', 'bower:run', 'jade:compile', 'js:minify', 'css:minify', 'scripts:inject', 'watch', 'copy:images']);
+gulp.task('default', ['bower:run', 'jade:compile', 'js:minify', 'css:minify', 'scripts:inject', 'copy:images']);
+gulp.task('dev', ['nodemon:run', 'bower:run', 'jade:compile', 'js:minify', 'css:minify', 'scripts:inject', 'watch', 'copy:images']);

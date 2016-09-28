@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prestart": "node_modules/.bin/sequelize db:migrate",
+    "test": "NODE_ENV=test node_modules/.bin/gulp test:client && NODE_ENV=test node_modules/.bin/gulp test:server",
+    "prestart": "node_modules/.bin/gulp && node_modules/.bin/sequelize db:migrate",
     "start": "node index.js"
   },
   "repository": {
@@ -16,7 +17,6 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "gulp": "^3.9.1",
     "gulp-jade": "^1.1.0",
     "morgan": "^1.7.0",
     "pg": "^6.0.3",
@@ -28,11 +28,16 @@
   },
   "devDependencies": {
     "angular-mocks": "^1.5.8",
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
     "gulp-bower": "0.0.13",
     "gulp-concat": "^2.6.0",
     "gulp-cssmin": "^0.1.7",
     "gulp-inject": "^4.1.0",
+    "gulp-istanbul": "^1.1.1",
+    "gulp-jade": "^1.1.0",
     "gulp-less": "^3.1.0",
+    "gulp-mocha": "^3.0.1",
     "gulp-nodemon": "^2.1.0",
     "gulp-plumber": "^1.1.0",
     "gulp-uglify": "^2.0.0",
@@ -42,6 +47,8 @@
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-spec-reporter": "0.0.26",
+    "mocha": "^3.1.0",
+    "node-mocks-http": "^1.5.4",
     "wiredep": "^4.0.0"
   }
 }

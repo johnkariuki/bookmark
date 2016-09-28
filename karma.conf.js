@@ -22,7 +22,7 @@ module.exports = function(config) {
       'public/lib/angular-material/angular-material.js',
       'public/lib/angular-material-icons/angular-material-icons.js',
       'node_modules/angular-mocks/angular-mocks.js',
-      'public/js/index.js',
+      'app/app.js',
       'app/js/**/*.js',
       'test/frontend/**/*-test.js'
     ],
@@ -70,7 +70,7 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultaneous
