@@ -10,3 +10,4 @@ test.js
 
 #Coverage reports
 coverage
+npm-debug.log
