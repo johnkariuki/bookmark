@@ -1,7 +1,6 @@
 var express = require('express'),
-  authors = require('./server/controllers/authors'),
-  books = require('./server/controllers/books'),
-  bodyParser = require('body-parser');;
+  routes = require('./server/routes')
+  bodyParser = require('body-parser');
 
 var app = express();
 
@@ -9,17 +8,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(process.cwd() + '/public'));
 
-app.get('/authors', authors.index);
-app.get('/authors/:id', authors.show);
-app.post('/authors', authors.create);
-app.put('/authors', authors.update);
-app.delete('/authors/:id', authors.delete);
-
-app.get('/books', books.index);
-app.get('/books/:id', books.show);
-app.post('/books', books.create);
-app.put('/books/:id', books.update);
-app.delete('/books/:id', books.delete);
+//App routes
+app.use(routes(express.Router()));
 
 app.get('/*', function (req, res) {
   res.sendFile('index.html', {

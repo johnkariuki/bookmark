@@ -29,7 +29,7 @@ module.exports= {
       .then(function (newBook) {
         res.status(200).json(newBook);
       })
-      .catch(function (error){
+      .catch(function (error) {
         res.status(500).json(error);
       });
   },
@@ -44,7 +44,7 @@ module.exports= {
     .then(function (updatedRecords) {
       res.status(200).json(updatedRecords);
     })
-    .catch(function (error){
+    .catch(function (error) {
       res.status(500).json(error);
     });
   },
@@ -59,7 +59,7 @@ module.exports= {
     .then(function (deletedRecords) {
       res.status(200).json(deletedRecords);
     })
-    .catch(function (error){
+    .catch(function (error) {
       res.status(500).json(error);
     });
   }

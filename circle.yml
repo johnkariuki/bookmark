@@ -1,0 +1,9 @@
+dependencies:
+  post:
+    - npm install -g gulp
+    - gulp
+deployment:
+  production:
+    branch: testing
+    heroku:
+      appname: scotch-bookmark

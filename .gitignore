@@ -7,3 +7,7 @@ public
 npm-debug.log
 test.js
 .DS_Store
+
+#Coverage reports
+coverage
+npm-debug.log

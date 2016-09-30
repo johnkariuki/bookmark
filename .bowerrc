@@ -1,6 +1,6 @@
 {
   "directory": "public/lib",
   "scripts": {
-    "postinstall":"gulp scripts:inject"
+    "postinstall":"node_modules/.bin/gulp scripts:inject"
   }
 }

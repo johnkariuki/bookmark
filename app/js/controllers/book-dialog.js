@@ -29,7 +29,7 @@ angular.module('Bookmark.controllers')
           $mdDialog.cancel();
         })
         .catch(function () {
-          Toast.show('Error updating book', 'top right', 300);
+          Toast.show('Error updating book', 'top right', 3000);
         });
     };
   }]);
