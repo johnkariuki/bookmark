@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "5.1.1",
+    "npm": "3.10.*"
+  },
   "scripts": {
     "test": "NODE_ENV=test node_modules/.bin/gulp test:client && NODE_ENV=test node_modules/.bin/gulp test:server",
     "prestart": "node_modules/.bin/gulp && node_modules/.bin/sequelize db:migrate",
