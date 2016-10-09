@@ -2,6 +2,7 @@ angular.module('Bookmark.services')
   .factory('Books', ['$http', '$q', function ($http, $q) {
 
     return {
+      //Create a new book.
       new: function (book) {
         var deferred = $q.defer();
         $http
@@ -14,6 +15,8 @@ angular.module('Bookmark.services')
           });
         return deferred.promise;
       },
+
+      //Delete an existing book.
       delete: function(bookId) {
         var deffered = $q.defer();
         $http
@@ -26,6 +29,8 @@ angular.module('Bookmark.services')
           });
         return deffered.promise;
       },
+
+      //Update an existing book.
       update: function (book) {
         var deferred = $q.defer();
         $http

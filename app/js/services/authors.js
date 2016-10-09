@@ -1,6 +1,7 @@
 angular.module('Bookmark.services')
   .factory('Authors', ['$http', '$q', function ($http, $q) {
     return {
+      //Fetch all authors
       all: function() {
         var deferred = $q.defer();
         $http

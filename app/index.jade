@@ -11,11 +11,13 @@ html(lang="en")
         h1 Authors
       md-content
         md-list
+          //Loop through the authors list
           md-list-item(ng-repeat="author in authors")
             md-button(ng-click="selectAuthor(author)")
               md-icon.author_avatar(md-svg-icon="author")
               span(ng-class="{selected: author === selectedAuthor}") {{author.name}}
       div.new_author
+        //Show dialog to create new author on click.
         md-button(aria-label="new_author" class="md-fab md-raised md-primary md-mini" ng-click="newAuthorDialog($event)")
           ng-md-icon(icon="add")
             md-tooltip(direction="top") Add new author

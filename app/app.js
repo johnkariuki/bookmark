@@ -1,5 +1,7 @@
 angular.module('Bookmark.controllers', []);
 angular.module('Bookmark.services', []);
+
+//Inject dependencies to the Bookmark module.
 var Bookmark = angular.module('Bookmark', [
   'ngMaterial',
   'ngMdIcons',
