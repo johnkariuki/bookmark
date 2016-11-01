@@ -6,6 +6,7 @@ angular.module('Bookmark.controllers')
       Authors
         .new(author)
         .then(function (newAuthor) {
+          //No books added yet. Set books array to empty.
           newAuthor.Books = [];
           $rootScope.authors.push(newAuthor);
           Toast.show('Author successfully created', 'top right', 3000);

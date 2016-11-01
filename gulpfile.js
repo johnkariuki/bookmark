@@ -126,4 +126,6 @@ gulp.task('watch', function () {
 
 //Default task.
 gulp.task('default', ['bower:run', 'jade:compile', 'js:minify', 'css:minify', 'scripts:inject', 'copy:images']);
+
+//Dev environment task.
 gulp.task('dev', ['nodemon:run', 'bower:run', 'jade:compile', 'js:minify', 'css:minify', 'scripts:inject', 'watch', 'copy:images']);

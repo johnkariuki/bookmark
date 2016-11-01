@@ -17,6 +17,7 @@ Bookmark
       .accentPalette('red');
   }])
   .config(['$mdIconProvider', function ($mdIconProvider) {
+    //Placeholder icon for author profile.
     $mdIconProvider
       .icon('author', './images/svg/person.svg');
   }]);

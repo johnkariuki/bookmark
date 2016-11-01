@@ -1,6 +1,7 @@
 angular.module('Bookmark.controllers')
 .controller('MainCtrl', ['$rootScope', '$scope', '$mdSidenav', '$mdDialog', 'Authors', 'Books', 'Toast',
 function ($rootScope, $scope, $mdSidenav, $mdDialog, Authors, Books, Toast) {
+  
   //Fetch all authors
   Authors.all()
     .then(function (authors) {
